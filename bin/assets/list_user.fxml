@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane prefHeight="700.0" prefWidth="400.0">
+         <bottom>
+            <AnchorPane prefHeight="41.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox layoutY="136.0" prefHeight="64.0" prefWidth="400.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" text="Form" />
+                        <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" text="List" />
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </bottom>
+         <top>
+            <AnchorPane prefHeight="67.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label prefHeight="71.0" prefWidth="400.0" text="Header" textAlignment="CENTER" />
+               </children>
+            </AnchorPane>
+         </top>
+         <center>
+            <ListView prefHeight="663.0" prefWidth="400.0" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

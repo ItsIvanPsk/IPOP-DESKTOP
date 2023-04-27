@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ConsoleDetailController">
+   <children>
+      <ImageView id="consoleImage" fx:id="consoleImage" fitHeight="150.0" fitWidth="200.0" layoutX="100.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <Label id="name" fx:id="name" layoutX="115.0" layoutY="164.0" prefHeight="44.0" prefWidth="170.0" text="CONSOLE NAME" textAlignment="CENTER" />
+      <Label id="date" fx:id="date" layoutX="115.0" layoutY="186.0" prefHeight="44.0" prefWidth="170.0" text="12/02/2033" textAlignment="CENTER" textFill="#5e5e5e" wrapText="true">
+         <font>
+            <Font name="System Italic" size="18.0" />
+         </font>
+      </Label>
+      <Circle fill="DODGERBLUE" id="color" fx:id="color" layoutX="334.0" layoutY="418.0" radius="29.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label id="brand" fx:id="brand" layoutX="30.0" layoutY="257.0" prefHeight="44.0" prefWidth="333.0" text="Brand: " textAlignment="CENTER" />
+      <Label id="processor" fx:id="processor" layoutX="30.0" layoutY="301.0" prefHeight="44.0" prefWidth="333.0" text="Processor: " textAlignment="CENTER" />
+      <Label id="sold" fx:id="sold" layoutX="30.0" layoutY="345.0" prefHeight="44.0" prefWidth="333.0" text="Sold: " textAlignment="CENTER" />
+      <Label id="" fx:id="" layoutX="30.0" layoutY="396.0" prefHeight="44.0" prefWidth="262.0" text="Color: " textAlignment="CENTER" />
+   </children>
+</AnchorPane>

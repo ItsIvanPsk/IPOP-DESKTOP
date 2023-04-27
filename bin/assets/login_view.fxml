@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginViewController">
+   <children>
+      <GridPane layoutX="27.0" layoutY="260.0" prefHeight="110.0" prefWidth="347.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="170.0" minWidth="10.0" prefWidth="112.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="240.0" minWidth="10.0" prefWidth="235.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="106.0" minHeight="0.0" prefHeight="59.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="202.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Servidor:" />
+            <Label text="Puerto:" GridPane.rowIndex="1" />
+            <TextField id="serverInput" GridPane.columnIndex="1" />
+            <PasswordField id="portInput" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+      <Button id="conectInput" layoutX="122.0" layoutY="409.0" mnemonicParsing="false" onAction="#connect" prefHeight="39.0" prefWidth="157.0" text="Connect" textAlignment="CENTER" />
+   </children>
+</AnchorPane>
