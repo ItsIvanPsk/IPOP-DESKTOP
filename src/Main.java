@@ -1,27 +1,27 @@
-import org.json.JSONObject;
-
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
     public static UtilsWS socketClient;
 
-    public static int port = 3000;
-    public static String protocol = "http";
-    public static String host = "localhost";
-    public static String protocolWS = "ws";
+    /* 
+        
+        public static int port = 5461;
+        public static String protocol = "http";
+        public static String host = "containers-us-west-10.railway.app";
+        public static String protocolWS = "wss";
+    */
 
     // Exemple de configuració per Railway
-    // public static int port = 443;
-    // public static String protocol = "https";
-    // public static String host = "server-production-46ef.up.railway.app";
-    // public static String protocolWS = "wss";
+    
+    public static int port = 3001;
+    public static String protocol = "http";
+    public static String host = "localhost";
+    public static String protocolWS = "ws";      
+    
 
 
     public static void main(String[] args) {
@@ -33,8 +33,8 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        final int windowWidth = 400;
-        final int windowHeight = 700;
+        final int windowWidth = 600;
+        final int windowHeight = 400;
 
         UtilsViews.parentContainer.setStyle("-fx-font: 14 arial;");
         UtilsViews.addView(getClass(), "HallOfFame", "./assets/hall_of_fame.fxml");

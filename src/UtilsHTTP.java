@@ -1,3 +1,4 @@
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -16,6 +17,8 @@ public class UtilsHTTP {
 	}
 
     public static void sendPOST(String url, String post_params, Consumer<String> callBack) {
+        System.out.println(url);
+        System.out.println(post_params);
         send("POST", url, post_params, callBack);
 	}
 
