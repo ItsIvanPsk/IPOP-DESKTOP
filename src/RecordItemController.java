@@ -1,5 +1,7 @@
 
 
+import org.json.JSONObject;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -34,9 +36,24 @@ public class RecordItemController {
         return isVisible;
     }
 
+    public void setupButton() {
+        if (isVisible){
+            visibility.setText("Mostrar");
+        } else { visibility.setText("Ocultar"); }
+    }
+
     @FXML
     public void showButton() {
-        
+        isVisible = !isVisible;
+        setupButton();
+        JSONObject obj = new JSONObject("{}");
+        obj.put("idRanking", id.getText());
+        obj.put("isVisible", isVisible);
+        UtilsHTTP.sendPOST(Main.protocol + "://" + Main.host + ":" + Main.port + "/api/hide_ranking", obj.toString(),
+                (response) -> { 
+                    HallOfFameController c0 = (HallOfFameController) UtilsViews.getController("HallOfFame");
+                    c0.loadRankingList();
+                });
     }
 
 }

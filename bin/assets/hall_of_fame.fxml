@@ -15,8 +15,8 @@
                </children></AnchorPane>
         </content>
       </ScrollPane>
-      <Button id="goNext" fx:id="goNext" layoutX="508.0" layoutY="347.0" mnemonicParsing="false" text="-&gt;" />
-      <Button id="goBack" fx:id="goBack" layoutX="51.0" layoutY="347.0" mnemonicParsing="false" text="&lt;-" />
+      <Button id="goNext" fx:id="goNext" layoutX="508.0" layoutY="347.0" mnemonicParsing="false" onAction="#getNext" text="-&gt;" />
+      <Button id="goBack" fx:id="goBack" layoutX="51.0" layoutY="347.0" mnemonicParsing="false" onAction="#getBack" text="&lt;-" />
       <Label layoutX="181.0" layoutY="14.0" text="HALL OF FAME">
          <font>
             <Font size="36.0" />

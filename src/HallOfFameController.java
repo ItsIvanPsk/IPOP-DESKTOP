@@ -38,14 +38,6 @@ public class HallOfFameController implements Initializable {
     }
 
     @FXML
-    public void showButton() {
-        System.out.println("ASD");
-    }
-
-    @FXML
-    public void getMoreRecords() {  }
-
-    @FXML
     public void enableGoBack(boolean state) { 
         goBack.setDisable(state);
     }
@@ -59,8 +51,6 @@ public class HallOfFameController implements Initializable {
         JSONObject obj = new JSONObject("{}");
         obj.put("start", startPosition);
         obj.put("end", endPosition);
-
-        showLoading();
         
         UtilsHTTP.sendPOST(Main.protocol + "://" + Main.host + ":" + Main.port + "/api/get_ranking", obj.toString(),
                 (response) -> {
@@ -69,34 +59,30 @@ public class HallOfFameController implements Initializable {
         
     }
 
-    private void loadRankings(String response) {
+    public void loadRankings(String response) {
         JSONObject objResponse = new JSONObject(response);
-        System.out.println(objResponse.toString());
-
         if (objResponse.getString("status").equals("OK")) {
-
             JSONArray JSONlist = objResponse.getJSONArray("message");
-            System.out.println(JSONlist.toString());
-            URL resource = this.getClass().getResource("./assets/listitem.fxml");            
-            vBox.getChildren().clear();
-            for (int i = 0; i < JSONlist.length(); i++) {
-                JSONObject ranking = JSONlist.getJSONObject(i);
-                Boolean vs = false;
-                if (ranking.getInt("isVisible") == 0) { vs=false; } else { vs=true; }
-                PlayerRecord newRecord = new PlayerRecord(
-                    ranking.getInt("idRanking"),
-                    ranking.getInt("correctTotems"),
-                    ranking.getInt("wrongTotems"),
-                    ranking.getInt("points"),
-                    ranking.getInt("cycle_idCycle"),
-                    ranking.getString("aliasPlayer").toString(),
-                    ranking.getString("timeStart").toString(),
-                    ranking.getString("timeEnd").toString(),
-                    vs
-                );
-                allRecords.add(newRecord);
-                records.add(newRecord);
-                if (newRecord.getIsVisible()) {
+            if (JSONlist.length() > 0) {
+                URL resource = this.getClass().getResource("./assets/listitem.fxml");            
+                vBox.getChildren().clear();
+                for (int i = 0; i < JSONlist.length(); i++) {
+                    JSONObject ranking = JSONlist.getJSONObject(i);
+                    Boolean vs = false;
+                    if (ranking.getInt("isVisible") == 0) { vs=false; } else { vs=true; }
+                    PlayerRecord newRecord = new PlayerRecord(
+                        ranking.getInt("idRanking"),
+                        ranking.getInt("correctTotems"),
+                        ranking.getInt("wrongTotems"),
+                        ranking.getInt("points"),
+                        ranking.getInt("cycle_idCycle"),
+                        ranking.getString("aliasPlayer").toString(),
+                        ranking.getString("timeStart").toString(),
+                        ranking.getString("timeEnd").toString(),
+                        vs
+                    );
+                    allRecords.add(newRecord);
+                    records.add(newRecord);
                     try {
                         FXMLLoader loader = new FXMLLoader(resource);
                         Parent itemTemplate = loader.load();
@@ -105,6 +91,7 @@ public class HallOfFameController implements Initializable {
                         itemController.setUsername(newRecord.getAliasPlayer());
                         itemController.setScore(String.valueOf(newRecord.getPoints()));
                         itemController.setVisible(newRecord.getIsVisible());
+                        itemController.setupButton();
                         vBox.getChildren().add(itemTemplate);
     
                     } catch (IOException e) {
@@ -112,7 +99,6 @@ public class HallOfFameController implements Initializable {
                     }
                 }
             }
-
         } else {
             System.out.println("KOKOKO");
         }
@@ -125,41 +111,28 @@ public class HallOfFameController implements Initializable {
         JSONObject obj = new JSONObject("{}");
         obj.put("start", startPosition);
         obj.put("end", endPosition);
-
-        showLoading();
         
         UtilsHTTP.sendPOST(Main.protocol + "://" + Main.host + ":" + Main.port + "/api/get_ranking", obj.toString(),
                 (response) -> {
+                    System.out.println(response);
                     loadRankings(response);
                 });
     }
 
     @FXML
     public void getBack() {
-        startPosition -= maxCant;
-        endPosition -= maxCant;
-        JSONObject obj = new JSONObject("{}");
-        obj.put("start", startPosition);
-        obj.put("end", endPosition);
-
-        showLoading();
-        
-        UtilsHTTP.sendPOST(Main.protocol + "://" + Main.host + ":" + Main.port + "/api/get_ranking", obj.toString(),
-                (response) -> {
-                    loadRankings(response);
-                });
-    }
-
-    private void showLoading() {
-        loadingCounter++;
-        //loading.setVisible(true);
-    }
-
-    private void hideLoading() {
-        loadingCounter--;
-        if (loadingCounter <= 0) {
-            loadingCounter = 0;
-            //loading.setVisible(false);
+        if (startPosition > maxCant) {
+            startPosition -= maxCant;
+            endPosition -= maxCant;
+            JSONObject obj = new JSONObject("{}");
+            obj.put("start", startPosition);
+            obj.put("end", endPosition);
+            
+            UtilsHTTP.sendPOST(Main.protocol + "://" + Main.host + ":" + Main.port + "/api/get_ranking", obj.toString(),
+                    (response) -> {
+                        System.out.println(response);
+                        loadRankings(response);
+                    });
         }
     }
 
