@@ -38,8 +38,8 @@ public class RecordItemController {
 
     public void setupButton() {
         if (isVisible){
-            visibility.setText("Mostrar");
-        } else { visibility.setText("Ocultar"); }
+            visibility.setText("Ocultar");
+        } else { visibility.setText("Mostrar"); }
     }
 
     @FXML
