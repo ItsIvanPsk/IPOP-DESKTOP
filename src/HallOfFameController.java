@@ -51,6 +51,7 @@ public class HallOfFameController implements Initializable {
         JSONObject obj = new JSONObject("{}");
         obj.put("start", startPosition);
         obj.put("end", endPosition);
+        // System.out.println("sending to server"+ obj.toString());
         
         UtilsHTTP.sendPOST(Main.protocol + "://" + Main.host + ":" + Main.port + "/api/get_ranking", obj.toString(),
                 (response) -> {
@@ -61,6 +62,7 @@ public class HallOfFameController implements Initializable {
 
     public void loadRankings(String response) {
         JSONObject objResponse = new JSONObject(response);
+        // System.out.println("received from server"+ objResponse);
         if (objResponse.getString("status").equals("OK")) {
             JSONArray JSONlist = objResponse.getJSONArray("message");
             if (JSONlist.length() > 0) {

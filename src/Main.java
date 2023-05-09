@@ -7,20 +7,17 @@ public class Main extends Application {
 
     public static UtilsWS socketClient;
 
-    /* 
-        
-        public static int port = 5461;
-        public static String protocol = "http";
-        public static String host = "containers-us-west-10.railway.app";
-        public static String protocolWS = "wss";
-    */
-
+    public static int port = 443;
+    public static String protocol = "https";
+    public static String host = "ipopgame2-production.up.railway.app";
+    public static String protocolWS = "wss";
+   
     // Exemple de configuració per Railway
     
-    public static int port = 3001;
+    /* public static int port = 3001;
     public static String protocol = "http";
     public static String host = "localhost";
-    public static String protocolWS = "ws";      
+    public static String protocolWS = "ws";  */     
 
     public static void main(String[] args) {
 

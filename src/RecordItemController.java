@@ -49,6 +49,7 @@ public class RecordItemController {
         JSONObject obj = new JSONObject("{}");
         obj.put("idRanking", id.getText());
         obj.put("isVisible", isVisible);
+        System.out.println("Sent to change visibility:"+ obj.toString());
         UtilsHTTP.sendPOST(Main.protocol + "://" + Main.host + ":" + Main.port + "/api/hide_ranking", obj.toString(),
                 (response) -> { 
                     HallOfFameController c0 = (HallOfFameController) UtilsViews.getController("HallOfFame");
